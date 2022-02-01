@@ -1,9 +1,8 @@
 import Logo from '../logo/logo';
-import {useState} from 'react';
 import OfferForm from '../offerform/offerform';
 import ReportOne from '../reportsone/reportsone';
 import Listreport from '../listreport/listreport';
-import { ListReportList,CardEx,Cardis,Point,Points } from '../../types/Card';
+import { ListReportList,CardEx,Cardis,Points } from '../../types/Card';
 import Maper from '../map/map';
 import CardNearby from '../cardnearby/cardnearby';
 
@@ -18,9 +17,6 @@ function Room(props:TypeRepProps){
   const {reps,rep,room,points,card} = props;
   const [oneRoom] = room;
   const [oneCard] = card;
-  const [selectedPoint] = useState<Point | undefined>(
-    undefined,
-  );
   return(
     <>
       <header className="header">
@@ -153,7 +149,7 @@ function Room(props:TypeRepProps){
             </div>
           </div>
           <section className="property__map map">
-            <Maper room={oneRoom as CardEx} points={points} selectPoint={selectedPoint}/>
+            <Maper room={oneRoom as CardEx} points={points}/>
           </section>
         </section>
         <div className="container">

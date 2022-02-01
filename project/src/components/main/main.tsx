@@ -4,14 +4,14 @@
 import { State } from '../../types/State';
 //import { Actions} from '../../types/Action';
 //import { changeRoom } from '../../store/action';
-import {useState} from 'react';
 import Card from '../card/card';
 import Logo from '../logo/logo';
-import {CardEx,Cardis,Point,Points} from '../../types/Card';
+import {CardEx,Cardis,Points} from '../../types/Card';
 import Maper from '../map/map';
 import ListCity from '../listCity/listCity';
 import {Cityes} from '../../types/Card';
 import { connect, ConnectedProps } from 'react-redux';
+import Sortlist  from '../sortlist/sortlist';
 
 type NumberProps = {
   //card: Cardis;
@@ -20,9 +20,10 @@ type NumberProps = {
   cityName: Cityes;
 }
 
-const mapStateToProps = ({ city, cardts }: State) => ({
+const mapStateToProps = ({ city, cardts,sort,checkPoint }: State) => ({
   city,
   cardts,
+  sort,
 });
 
 
@@ -34,9 +35,6 @@ type ConnectedComponentProps = PropsFromRedux & NumberProps;
 
 function Main({cardts,room,points,cityName,city}: ConnectedComponentProps): JSX.Element{
   const [oneRoom] = room;
-  const [selectedPoint] = useState<Point | undefined>(
-    undefined,
-  );
   return(
     <>
       <header className="header">
@@ -79,25 +77,15 @@ function Main({cardts,room,points,cityName,city}: ConnectedComponentProps): JSX.
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{cardts.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
+                <span className="places__sorting-caption">Sort by </span>
+
+                <Sortlist />
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <Card  />
               </div>
             </section>
-            <Maper room={oneRoom as CardEx} points={points} selectPoint={selectedPoint}/>
+            <Maper room={oneRoom as CardEx} points={points}/>
           </div>
         </div>
       </main>

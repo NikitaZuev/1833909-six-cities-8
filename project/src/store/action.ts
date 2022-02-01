@@ -1,5 +1,5 @@
 import {ActionType} from '../types/Action';
-import {InfoCard} from '../types/Card';
+import {InfoCard, Point} from '../types/Card';
 
 export const changeCity = (city : string) =>({
   type: ActionType.ChangeCity,
@@ -9,4 +9,14 @@ export const changeCity = (city : string) =>({
 export const changeRoom = (cardts : InfoCard[]) =>({
   type: ActionType.ChangeRoom,
   payload: cardts,
+}as const);
+
+export const changeSort = (sort: string) =>({
+  type: ActionType.ChangeSort,
+  payload: sort,
+}as const);
+
+export const changeCheckPoint = (checkPoint: Point | null) =>({
+  type: ActionType.ChangeCheckPoint,
+  payload: checkPoint,
 }as const);

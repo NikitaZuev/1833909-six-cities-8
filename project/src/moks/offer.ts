@@ -10,7 +10,7 @@ export const cardOne: CardEx[] = [
       id: 1,
       cardMark: 'Premium',
       cardImg: 'img/apartment-01.jpg',
-      priceValue: 120,
+      priceValue: 180,
       cardName: 'Beautiful & luxurious apartment',
       cardType: 'Apartment',
       imgSmall: 'img/apartment-small-03.jpg',
@@ -104,7 +104,7 @@ export const cardOne: CardEx[] = [
 export const Points: Point[]=[
   {
     id: 1,
-    cardName: 'Beautiful & luxurious apartment at great location',
+    cardName: 'Beautiful & luxurious apartment',
     latitude: 52.3909553943508,
     longitude: 4.85309666406198,
   },
